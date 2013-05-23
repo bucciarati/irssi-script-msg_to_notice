@@ -31,7 +31,11 @@ sub handle_privmsg {
     for my $noticeable_nick ( split ',', Irssi::settings_get_str('noticeable_nicks') ) {
         $noticeable_nick =~ s/\A \s+//x;
         $noticeable_nick =~ s/\s+ \z//x;
-        $is_noticeable = 1 if $noticeable_nick eq $_[I_NICK];
+
+        if ( $noticeable_nick eq $_[I_NICK] ){
+            $is_noticeable = 1;
+            last;
+        }
     }
     return unless $is_noticeable;
 

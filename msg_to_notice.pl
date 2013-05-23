@@ -32,7 +32,7 @@ sub handle_privmsg {
         $noticeable_nick =~ s/\A \s+//x;
         $noticeable_nick =~ s/\s+ \z//x;
 
-        if ( $noticeable_nick eq $_[I_NICK] ){
+        if ( lc $noticeable_nick eq lc $_[I_NICK] ){
             $is_noticeable = 1;
             last;
         }

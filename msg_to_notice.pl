@@ -28,7 +28,7 @@ sub handle_privmsg {
 
     # Irssi::print("server<$_[I_SERVER]> data<$_[I_DATA]>[$target:$message] nick<$_[I_NICK]> mask<$_[I_MASK]> target<@{[ $_[I_TARGET] // '(undef)' ]}>");
     my $is_noticeable = 0;
-    for my $noticeable_nick ( split ',', Irssi::settings_get_str('noticeable_nicks') ) {
+    for my $noticeable_nick ( split /[\s,]+/, Irssi::settings_get_str('noticeable_nicks') ) {
         $noticeable_nick =~ s/\A \s+//x;
         $noticeable_nick =~ s/\s+ \z//x;
 
